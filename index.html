@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" href="contactstyles.css">
+    <link rel="stylesheet" href="./src/contactstyles.css">
     <title> Contact </title>
 </head>
 
@@ -13,7 +13,7 @@
             <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
         </div>
         <h2>Send me a message </h2>
-        <form  action="#" class="getElementsByClassName">
+        <form class="contact-form" action="#">
             <input type="text" name="Name" placeholder="   Full Name *" required>
             <input type="email" name="Email" placeholder="   Email *" required>
             <input type="tel" name="PhoneNumber" placeholder="   [10-digit] Mobile number *" pattern="[0-9]{10}" required>
@@ -24,30 +24,27 @@
     </div>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
-        const form = document.getElementsByClassName("contact-form");
+        const form = document.getElementsByClassName("contact-form")[0];
         function sendMsg(e) {
             e.preventDefault();
-            
-            const name = document.getElementsByName("Name");
-            const email = document.getElementsByName("Email");
-            const phnum = document.getElementsByName("PhoneNumber");
-            const district = document.getElementsByName("District");
-            const msg = document.getElementsByName("Message");
-
+            const name = document.getElementsByName("Name")[0];
+            const email = document.getElementsByName("Email")[0];
+            const phnum = document.getElementsByName("PhoneNumber")[0];
+            const district = document.getElementsByName("District")[0];
+            const msg = document.getElementsByName("Message")[0];
             Email.send({
-                Host : "smtp.elasticemail.com",
-                Username : "santhoshpkr8402@gmail.com",
-                Password : "AA65A0AFB2F4DCD4684E5B37763712CAA3FA",
-                To : "santhoshpkr8402@gmail.com",
-                From : email.value,
-                Subject : "Pkr diary contact",
-                Body : "And this is the body"
+                SecureToken: "6747fe63-87a5-498b-934f-c4fa60a988c4",
+                To: "santhoshpkr8402@gmail.com",
+                From: "santhoshpkr8402@gmail.com",
+                Subject: "Contact from PKR Pleasant Dairy Query",
+                Body: "Name: " + name.value + "\r\nEmail: " + email.value + "\r\nPhone Number: " + phnum.value +
+            "\r\nDistrict: " + district.value + "\r\nMessage: " + msg.value
             }).then(
-                message => alert("message sent successfully")
-                );
-        }
+                message => alert("Message Sent Successfully")
+            );
+            }
 
-        form.addEventListener('submit' , sendMsg);
+            form.addEventListener('submit', sendMsg);
     </script>
 </body>
 
