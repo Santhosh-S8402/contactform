@@ -13,7 +13,7 @@
             <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
         </div>
         <h2>Send me a message </h2>
-        <form action="message.php" method="post">
+        <form  method="post">
             <input type="text" name="Name" placeholder="   Full Name *" required>
             <input type="email" name="Email" placeholder="   Email *" required>
             <input type="tel" name="PhoneNumber" placeholder="   [10-digit] Mobile number *" pattern="[0-9]{10}" required>
@@ -22,7 +22,32 @@
             <button type="submit" name="send"> Send </button>
         </form>
     </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendMsg(e) {
+            e.preventDefault();
+            const form = document.querySelector('.contact-form');
+            const name = document.getElementsByName("Name");
+            const email = document.getElementsByName("Email");
+            const phnum = document.getElementsByName("PhoneNumber");
+            const district = document.getElementsByName("District");
+            const msg = document.getElementsByName("Message");
 
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "santhoshpkr8402@gmail.com",
+                Password : "AA65A0AFB2F4DCD4684E5B37763712CAA3FA",
+                To : "santhoshpkr8402@gmail.com",
+                From : email.value,
+                Subject : "Pkr diary contact",
+                Body : "And this is the body"
+            }).then(
+                message => alert(message)
+                );
+        }
+
+        form.addEventListener('submit' , sendMsg);
+    </script>
 </body>
 
 </html>
