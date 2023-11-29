@@ -24,9 +24,10 @@
     </div>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
+        const form = document.getElementsByClassName("contact-form");
         function sendMsg(e) {
             e.preventDefault();
-            const form = document.getElementsByClassName("contact-form");
+            
             const name = document.getElementsByName("Name");
             const email = document.getElementsByName("Email");
             const phnum = document.getElementsByName("PhoneNumber");
